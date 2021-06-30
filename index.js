@@ -11,4 +11,4 @@ const server = new ApolloServer({ typeDefs, resolvers })
 
 server.applyMiddleware({app});
 
-app.listen({ port: process.env.PORT || 4000 }, () => console.log(`El servidor esta corriente`));
+app.listen({ port: process.env.PORT }, () => console.log(`El servidor esta corriendo`));
