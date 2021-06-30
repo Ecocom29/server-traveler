@@ -1,0 +1,153 @@
+type Usuarios {
+    id: ID,
+    nombres: String,
+    apellidos: String,
+    correoElectronico: String,
+    contrasenia: String,
+    genero: String,  
+    pais:   ID,
+    estado:   ID,
+    municipio:  ID,
+    imagenPerfil: String,
+    tipoUsuario: String,
+    estado:  String, 
+    fechaAlta: String, 
+    esActivo: Int
+}
+
+type Lugares {
+    id: ID,
+	nombre:String,
+    recomendaciones: String,
+    descripcion: String,
+    horaInicio: String,
+    horaFin: String,
+    ubicacion: String,
+    imagenPortada: String,
+    imagenes: [ImagenLugar],
+    categoria:   String,
+    usuario:   String,
+    pais:   String,
+    estado:   String,
+    municipio:   String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+type ImagenLugar {
+    imagen: String,
+    lFotoPortada:Int
+}
+
+type Categorias {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+type Pais {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+type Estado {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+type Municipio {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+type Token {
+    token: String
+}
+
+input UsuariosInput {
+    id: ID,
+    nombres: String!,
+    apellidos: String,
+    correoElectronico: String!,
+    contrasenia: String!,
+    genero: String,  
+    pais:   ID,
+    estado:   ID,
+    municipio:   ID,
+    imagenPerfil: String,
+    tipoUsuario: String,
+    estado:  String,  
+    esActivo: Int
+}
+
+input LugaresInput {
+    id: ID,
+	nombre:String,
+    recomendaciones: String,
+    descripcion: String,
+    horaInicio: String,
+    horaFin: String,
+    ubicacion: String,
+    imagenPortada: String,
+    imagenes: [ImagenLugarInput],
+    categoria:   String,
+    usuario:   String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+input ImagenLugarInput {
+    imagen: String,
+    lFotoPortada:Int
+}
+
+input CategoriasInput {
+    nombre: String!,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+input PaisInput {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+input EstadoInput {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+input MunicipioInput {
+    nombre: String,
+    descripcion: String,
+    fechaAlta: String,
+    esActivo: Int
+}
+
+type Query {
+    ObtenerUsuario: Usuarios
+    ObtenerDatosUsuario: [Usuarios]
+    ObtenerLugares: [Lugares]
+    ObtenerPaises: [Pais]
+    ObtenerEstados: [Estado]
+    ObtenerMunicipios: [Municipio]
+    ObtenerCategorias: [Categorias]
+}
+
+type Mutation {
+    CrearUsuario(correoElectronico:String,contrasenia:String): String
+    AutenticarUsuario(correoElectronico:String,contrasenia:String): Token
+    CrearLugar(input: LugaresInput): Lugares
+}
