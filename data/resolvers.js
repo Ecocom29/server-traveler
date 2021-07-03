@@ -55,9 +55,9 @@ export const resolvers = {
         }
     },
     Mutation: {
-        CrearUsuario: async (root, { correoElectronico, contrasenia }) => {
+        CrearUsuario: async (root, { correoElectronico, contrasenia }, ctx) => {
 
-            console.log('REGISTRANDO');
+           
             console.log(correoElectronico);
             console.log(contrasenia);
 
@@ -95,11 +95,8 @@ export const resolvers = {
                 console.log(error);
             }
         },
-        AutenticarUsuario: async (root, { correoElectronico, contrasenia }) => {
-
-            console.log('AUTENTICANDO');
-            console.log(correoElectronico);
-            console.log(contrasenia);
+        AutenticarUsuario: async (root, { correoElectronico, contrasenia }, ctx) => {
+            console.log('CONTEXT' , ctx);
             //verificar si el exite          
             const existeUsuario = await Usuarios.findOne({ correoElectronico });
 
@@ -120,7 +117,7 @@ export const resolvers = {
             return { token: generarToken(existeUsuario, process.env.SECRETO, '2hr') }
         },
         CrearLugar: async (root, { input }, ) => {
-            console.log(input)
+            console.log(input);
             const { nombre } = input;
             const obtenerLugar = await Lugares.findOne({ nombre });
  
