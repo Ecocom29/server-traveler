@@ -1,8 +1,8 @@
-Backend application for tourist sites consultation
+**Backend application for tourist sites consultation**
 
 Implemented technology:
--Node js
--GraphQL
--Javascript
--Apollo
--Express
+- Node js
+- GraphQL
+- Javascript
+- Apollo
+- Express
